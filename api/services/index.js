@@ -1,5 +1,7 @@
-const userIdentities = require("./userIdentities");
+// const userIdentities = require("./userIdentities");
+const questionnaires = require("./questionnaires");
 
 module.exports = {
-  identityService: userIdentities
+  // identityService: userIdentities,
+  questionnairesService: questionnaires
 };

@@ -7,6 +7,7 @@ const routes = require("../api");
 
 module.exports = async ({ app }) => {
   app.enable("trust proxy");
+  app.use(helmet());
   app.use(cors());
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
@@ -17,7 +18,6 @@ module.exports = async ({ app }) => {
     })
   );
   app.use(morgan("dev"));
-  app.use(helmet());
   app.use(cors());
   app.use("/api", routes());
 };

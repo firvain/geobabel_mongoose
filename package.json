@@ -1,4 +1,28 @@
 {
+  "name": "geobabel2_api",
+  "description": "API for geobabel platform",
+  "version": "0.0.1",
+  "private": true,
+  "main": "server.js",
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/firvain/geobabel_mongoose.git"
+    }
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "Terra Cognita",
+    "email": "info@terracognita.eu",
+    "url": "https://www.terracognita.eu"
+  },
+  "keywords": [
+    "api",
+    "mongoose"
+  ],
+  "scripts": {
+    "dev": "nodemon"
+  },
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
@@ -20,5 +44,16 @@
     "eslint-plugin-promise": "^4.2.1",
     "nodemon": "^2.0.2",
     "prettier": "^1.19.1"
+  },
+  "engines": {
+    "node": ">= 10.16.0",
+    "npm": ">= 6.9.0",
+    "yarn": "^1.22.0"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      ".git",
+      "node_modules/**/node_modules"
+    ]
   }
 }

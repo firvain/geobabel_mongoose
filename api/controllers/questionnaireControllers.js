@@ -2,8 +2,7 @@ const { questionnairesService } = require("../services");
 
 const getAll = async (req, res) => {
   const result = await questionnairesService.getAll();
-  console.log(result);
-  res.send("this is questionnaire resourse");
+  res.send(result);
 };
 
 const create = async (req, res) => {

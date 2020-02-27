@@ -34,6 +34,8 @@
     "http-status-codes": "^1.4.0",
     "jwks-rsa": "^1.6.2",
     "mongoose": "^5.8.11",
+    "mongoose-geojson-schema": "^2.1.5",
+    "mongoose-type-email": "^1.0.12",
     "morgan": "^1.9.1",
     "winston": "^3.2.1"
   },

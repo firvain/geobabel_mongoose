@@ -1,7 +1,9 @@
-const UserIdentity = require("./UserIdentities");
+const Users = require("./Users");
 const Questionnaires = require("./Questionnaires");
+const Projects = require("./Projects");
 
 module.exports = {
-  UserIdentity,
-  Questionnaires
+  Users,
+  Questionnaires,
+  Projects
 };

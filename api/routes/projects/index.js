@@ -1,4 +1,4 @@
-const userIdentityRouter = require("express").Router();
+const projectRouter = require("express").Router();
 // const guard = require("express-jwt-permissions")();
 // const { director } = require("../../../permissions");
 const {
@@ -8,17 +8,17 @@ const {
   findById,
   deleteById,
   updateById
-} = require("../../controllers").userIdentitiesControllers;
+} = require("../../controllers").projectsControllers;
 
 module.exports = apiRouter => {
-  apiRouter.use("/users", userIdentityRouter);
-  userIdentityRouter
+  apiRouter.use("/projects", projectRouter);
+  projectRouter
     .route("/")
     .get(getAll)
     .delete(empty)
     .post(create);
 
-  userIdentityRouter
+  projectRouter
     .route("/:_id")
     .get(findById)
     .patch(updateById)

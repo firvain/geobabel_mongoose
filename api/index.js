@@ -1,7 +1,7 @@
 const apiRouter = require("express").Router();
 const users = require("./routes/users");
-const questionnaires = require("./routes/questionnaires");
 const projects = require("./routes/projects");
+const questionnaires = require("./routes/questionnaires");
 
 module.exports = () => {
   apiRouter.get("/status", (req, res) => {
@@ -9,8 +9,8 @@ module.exports = () => {
   });
 
   users(apiRouter);
-  questionnaires(apiRouter);
   projects(apiRouter);
+  questionnaires(apiRouter);
 
   apiRouter.use((err, req, res, next) => {
     next(err);

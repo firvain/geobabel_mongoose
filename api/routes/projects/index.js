@@ -1,28 +1,22 @@
 const projectRouter = require("express").Router();
 // const guard = require("express-jwt-permissions")();
 // const { director } = require("../../../permissions");
-const {
-  getAll,
-  create,
-  empty,
-  findById,
-  deleteById,
-  updateById
-} = require("../../controllers").projectsControllers;
-
+const { ProjectsControllers } = require("../../controllers");
 module.exports = apiRouter => {
   apiRouter.use("/projects", projectRouter);
+
   projectRouter
     .route("/")
-    .get(getAll)
-    .delete(empty)
-    .post(create);
+    //see https://stackoverflow.com/questions/45643005/why-is-this-undefined-in-this-class-method
+    .get(ProjectsControllers.getAll.bind(ProjectsControllers))
+    .delete(ProjectsControllers.empty.bind(ProjectsControllers))
+    .post(ProjectsControllers.create.bind(ProjectsControllers));
 
   projectRouter
     .route("/:_id")
-    .get(findById)
-    .patch(updateById)
-    .delete(deleteById);
+    .get(ProjectsControllers.findById.bind(ProjectsControllers))
+    .patch(ProjectsControllers.updateById.bind(ProjectsControllers))
+    .delete(ProjectsControllers.deleteById.bind(ProjectsControllers));
 
   apiRouter.use((err, req, res, next) => {
     next(err);

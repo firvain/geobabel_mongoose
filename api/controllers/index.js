@@ -1,10 +1,8 @@
-// const teachersControllers = require("./teachersControllers");
-const questionnaireControllers = require("./questionnaireControllers");
-const usersControllers = require("./usersControllers");
-const projectsControllers = require("./projectsControllers");
-
+const QuestionnairesControllers = require("./QuestionnairesController");
+const UsersControllers = require("./UsersControllers");
+const ProjectsControllers = require("./ProjectsControllers");
 module.exports = {
-  usersControllers,
-  questionnaireControllers,
-  projectsControllers
+  UsersControllers,
+  QuestionnairesControllers,
+  ProjectsControllers
 };

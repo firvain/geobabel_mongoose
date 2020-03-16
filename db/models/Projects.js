@@ -1,18 +1,11 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-require("mongoose-type-email");
 require("mongoose-geojson-schema");
 
 const ProjectsSchema = new Schema({
   user_id: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Users"
-  },
-  creator: {
-    email: {
-      type: mongoose.SchemaTypes.Email,
-      allowBlank: true
-    }
   },
   created: {
     type: Date,

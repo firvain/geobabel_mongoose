@@ -1,17 +1,8 @@
 const { Questionnaires } = require("../../db/models");
-
-const getAll = async () => {
-  return await Questionnaires.find({}).exec();
-};
-
-const create = async () => {
-  return await Questionnaires.create({
-    properties: "2",
-    questions: "question_id: 2"
-  });
-};
-
-module.exports = {
-  getAll,
-  create
-};
+const SuperService = require("./SuperService");
+class QuestionnairesService extends SuperService {
+  constructor(model) {
+    super(model);
+  }
+}
+module.exports = new QuestionnairesService(Questionnaires);

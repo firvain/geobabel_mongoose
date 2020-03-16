@@ -5,7 +5,7 @@ const UsersSchema = new Schema({
     type: Schema.Types.ObjectId,
     required: true
   },
-  role: {
+  roles: {
     type: String
   }
 });

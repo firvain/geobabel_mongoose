@@ -1,9 +1,8 @@
-const questionnaires = require("./questionnaires");
 const users = require("./users");
 const projects = require("./projects");
-
+const questionnaires = require("./questionnaires");
 module.exports = {
-  usersService: users,
-  questionnairesService: questionnaires,
-  projectsService: projects
+  UsersService: users,
+  ProjectsService: projects,
+  QuestionnairesService: questionnaires
 };

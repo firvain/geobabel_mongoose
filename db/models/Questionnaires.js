@@ -50,7 +50,7 @@ const QuestionnaireSchema = new Schema({
               question: {
                 type: Schema.Types.Mixed,
                 id: { type: String },
-                quetionType: { type: String },
+                questionType: { type: String },
                 title: { type: String },
                 description: { type: String },
                 visible: { type: Boolean },

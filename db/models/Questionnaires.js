@@ -36,8 +36,8 @@ const QuestionnaireSchema = new Schema({
       type: Date
     }
   },
-  locale: { type: String },
-  totalTimeCountdownInMinutes: { type: Number },
+  locale: { type: String, required: true, default: "en" },
+  totalTimeCountdownInMinutes: { type: Number, default: 0 },
   pages: [
     {
       id: { type: String, minlength: 1, maxlength: 64 },
@@ -50,21 +50,17 @@ const QuestionnaireSchema = new Schema({
               question: {
                 type: Schema.Types.Mixed,
                 id: { type: String, minlength: 1, maxlength: 64 },
-                questionType: { type: String },
-                title: { type: String },
-                description: { type: String },
-                visible: { type: Boolean },
-                required: { type: Boolean },
-                enabled: { type: Boolean },
+                questionType: { type: String, minlength: 1 },
+                title: { type: String, minlength: 1 },
+                description: { type: String, minlength: 1 },
+                visible: { type: Boolean, default: true },
+                required: { type: Boolean, default: false },
+                enabled: { type: Boolean, default: true },
                 value: { type: String },
                 defaultValue: { type: String },
                 correctValue: { type: String },
-                timeCountdown: { type: Number },
+                timeCountdown: { type: Number, min: 0, default: 0 },
                 preloadedData: [
-                  {
-                    id: { type: String, minlength: 1, maxlength: 64 },
-                    text: { type: String }
-                  },
                   {
                     id: { type: String, minlength: 1, maxlength: 64 },
                     text: { type: String }
@@ -73,46 +69,66 @@ const QuestionnaireSchema = new Schema({
                 validationRules: [
                   {
                     ruleId: { type: String, minlength: 1, maxlength: 64 },
-                    type: { type: String },
-                    expression: { type: String },
-                    errorOutput: { type: String }
+                    type: { type: String, minlength: 1 },
+                    expression: { type: String, minlength: 1 },
+                    errorOutput: { type: String, minlength: 1 }
                   }
                 ],
                 horizontalValues: [
                   {
                     id: { type: String, minlength: 1, maxlength: 64 },
-                    text: { type: String }
+                    text: { type: String, minlength: 1 }
                   }
                 ],
                 verticalValues: [
                   {
                     id: { type: String, minlength: 1, maxlength: 64 },
-                    text: { type: String }
+                    text: { type: String, minlength: 1 }
                   }
                 ],
-                multipleButtons: { type: Boolean },
+                multipleButtons: { type: Boolean, default: false },
                 buttons: [
                   {
                     id: { type: String, minlength: 1, maxlength: 64 },
                     label: { type: String },
-                    geometryType: { type: String },
+                    geometryType: {
+                      type: String,
+                      minlength: 1,
+                      default: "Point"
+                    },
                     coords: { type: String },
                     style: {
-                      radius: { type: String },
-                      strkWdth: { type: String },
-                      strkClr: { type: String },
-                      fllClr: { type: String }
+                      radius: { type: Number, min: 0, default: 1 },
+                      strkWdth: { type: Number, min: 0, default: 1 },
+                      strkClr: {
+                        type: String,
+                        minlength: 1,
+                        default: "#000000"
+                      },
+                      fllClr: { type: String, minlength: 1, default: "#000000" }
                     }
                   }
                 ],
                 style: {
-                  titleFontSize: { type: Number },
-                  titleFontColor: { type: String },
-                  descriptionFontSize: { type: Number },
-                  descriptionFontColor: { type: String },
-                  titleLocation: { type: String },
-                  descriptionLocation: { type: String },
-                  widthOverride: { type: String }
+                  titleFontSize: { type: Number, min: 1, default: 10 },
+                  titleFontColor: {
+                    type: String,
+                    minlength: 1,
+                    default: "#000000"
+                  },
+                  descriptionFontSize: { type: Number, min: 1, default: 9 },
+                  descriptionFontColor: {
+                    type: String,
+                    minlength: 1,
+                    default: "#000000"
+                  },
+                  titleLocation: { type: String, minlength: 1, default: "top" },
+                  descriptionLocation: {
+                    type: String,
+                    minlength: 1,
+                    default: "top"
+                  },
+                  widthOverride: { type: Number, min: 0 }
                 }
               }
             }
@@ -124,16 +140,16 @@ const QuestionnaireSchema = new Schema({
   logicRules: [
     {
       ruleId: { type: String, minlength: 1, maxlength: 64 },
-      expression: { type: String },
-      action: { type: String }
+      expression: { type: String, minlength: 1 },
+      action: { type: String, minlength: 1 }
     }
   ],
   spatialProperties: {
     isTheMapActive: { type: Boolean },
     mapExtent: { type: Array },
     geojson: { type: mongoose.Schema.Types.Feature },
-    wms: { type: String },
-    basemap: { type: String }
+    wms: { type: String, minlength: 1 },
+    basemap: { type: String, minlength: 1 }
   }
 });
 module.exports = mongoose.model("questionnaires", QuestionnaireSchema);

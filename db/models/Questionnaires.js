@@ -40,16 +40,16 @@ const QuestionnaireSchema = new Schema({
   totalTimeCountdownInMinutes: { type: Number },
   pages: [
     {
-      id: { type: String },
+      id: { type: String, minlength: 1, maxlength: 64 },
       rows: [
         {
-          id: { type: String },
+          id: { type: String, minlength: 1, maxlength: 64 },
           columns: [
             {
-              id: { type: String },
+              id: { type: String, minlength: 1, maxlength: 64 },
               question: {
                 type: Schema.Types.Mixed,
-                id: { type: String },
+                id: { type: String, minlength: 1, maxlength: 64 },
                 questionType: { type: String },
                 title: { type: String },
                 description: { type: String },
@@ -62,17 +62,17 @@ const QuestionnaireSchema = new Schema({
                 timeCountdown: { type: Number },
                 preloadedData: [
                   {
-                    id: { type: String },
+                    id: { type: String, minlength: 1, maxlength: 64 },
                     text: { type: String }
                   },
                   {
-                    id: { type: String },
+                    id: { type: String, minlength: 1, maxlength: 64 },
                     text: { type: String }
                   }
                 ],
                 validationRules: [
                   {
-                    ruleId: { type: String },
+                    ruleId: { type: String, minlength: 1, maxlength: 64 },
                     type: { type: String },
                     expression: { type: String },
                     errorOutput: { type: String }
@@ -80,28 +80,20 @@ const QuestionnaireSchema = new Schema({
                 ],
                 horizontalValues: [
                   {
-                    id: { type: String },
-                    text: { type: String }
-                  },
-                  {
-                    id: { type: String },
+                    id: { type: String, minlength: 1, maxlength: 64 },
                     text: { type: String }
                   }
                 ],
                 verticalValues: [
                   {
-                    id: { type: String },
-                    text: { type: String }
-                  },
-                  {
-                    id: { type: String },
+                    id: { type: String, minlength: 1, maxlength: 64 },
                     text: { type: String }
                   }
                 ],
                 multipleButtons: { type: Boolean },
                 buttons: [
                   {
-                    id: { type: String },
+                    id: { type: String, minlength: 1, maxlength: 64 },
                     label: { type: String },
                     geometryType: { type: String },
                     coords: { type: String },
@@ -131,7 +123,7 @@ const QuestionnaireSchema = new Schema({
   ],
   logicRules: [
     {
-      ruleId: { type: String },
+      ruleId: { type: String, minlength: 1, maxlength: 64 },
       expression: { type: String },
       action: { type: String }
     }

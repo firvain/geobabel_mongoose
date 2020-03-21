@@ -6,11 +6,13 @@ require("mongoose-geojson-schema");
 const QuestionnaireSchema = new Schema({
   user_id: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Users"
+    ref: "Users",
+    required: true
   },
   project_id: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Projects"
+    ref: "Projects",
+    required: true
   },
   creator: {
     email: {
@@ -25,7 +27,8 @@ const QuestionnaireSchema = new Schema({
   },
   active: {
     type: Boolean,
-    default: false
+    default: false,
+    required: true
   },
   duration: {
     from: {
@@ -40,17 +43,21 @@ const QuestionnaireSchema = new Schema({
   totalTimeCountdownInMinutes: { type: Number, default: 0 },
   pages: [
     {
-      id: { type: String, minlength: 1, maxlength: 64 },
+      id: { type: String, minlength: 1, maxlength: 64, required: true },
       rows: [
         {
-          id: { type: String, minlength: 1, maxlength: 64 },
+          id: { type: String, minlength: 1, maxlength: 64, required: true },
           columns: [
             {
-              id: { type: String, minlength: 1, maxlength: 64 },
+              id: { type: String, minlength: 1, maxlength: 64, required: true },
               question: {
-                type: Schema.Types.Mixed,
-                id: { type: String, minlength: 1, maxlength: 64 },
-                questionType: { type: String, minlength: 1 },
+                id: {
+                  type: String,
+                  minlength: 1,
+                  maxlength: 64,
+                  required: true
+                },
+                questionType: { type: String, minlength: 1, required: true },
                 title: { type: String, minlength: 1 },
                 description: { type: String, minlength: 1 },
                 visible: { type: Boolean, default: true },
@@ -62,13 +69,23 @@ const QuestionnaireSchema = new Schema({
                 timeCountdown: { type: Number, min: 0, default: 0 },
                 preloadedData: [
                   {
-                    id: { type: String, minlength: 1, maxlength: 64 },
+                    id: {
+                      type: String,
+                      minlength: 1,
+                      maxlength: 64,
+                      required: true
+                    },
                     text: { type: String }
                   }
                 ],
                 validationRules: [
                   {
-                    ruleId: { type: String, minlength: 1, maxlength: 64 },
+                    ruleId: {
+                      type: String,
+                      minlength: 1,
+                      maxlength: 64,
+                      required: true
+                    },
                     type: { type: String, minlength: 1 },
                     expression: { type: String, minlength: 1 },
                     errorOutput: { type: String, minlength: 1 }
@@ -89,7 +106,12 @@ const QuestionnaireSchema = new Schema({
                 multipleButtons: { type: Boolean, default: false },
                 buttons: [
                   {
-                    id: { type: String, minlength: 1, maxlength: 64 },
+                    id: {
+                      type: String,
+                      minlength: 1,
+                      maxlength: 64,
+                      required: true
+                    },
                     label: { type: String },
                     geometryType: {
                       type: String,
@@ -139,13 +161,13 @@ const QuestionnaireSchema = new Schema({
   ],
   logicRules: [
     {
-      ruleId: { type: String, minlength: 1, maxlength: 64 },
+      ruleId: { type: String, minlength: 1, maxlength: 64, required: true },
       expression: { type: String, minlength: 1 },
       action: { type: String, minlength: 1 }
     }
   ],
   spatialProperties: {
-    isTheMapActive: { type: Boolean },
+    isTheMapActive: { type: Boolean, required: true },
     mapExtent: { type: Array },
     geojson: { type: mongoose.Schema.Types.Feature },
     wms: { type: String, minlength: 1 },

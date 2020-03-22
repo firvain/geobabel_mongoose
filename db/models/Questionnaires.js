@@ -4,12 +4,12 @@ require("mongoose-type-email");
 require("mongoose-geojson-schema");
 
 const QuestionnaireSchema = new Schema({
-  user_id: {
+  userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Users",
     required: true
   },
-  project_id: {
+  projectId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Projects",
     required: true
@@ -22,7 +22,6 @@ const QuestionnaireSchema = new Schema({
   },
   created: {
     type: Date,
-    required: true,
     default: Date.now
   },
   active: {
@@ -39,17 +38,17 @@ const QuestionnaireSchema = new Schema({
       type: Date
     }
   },
-  locale: { type: String, required: true, default: "en" },
+  locale: { type: String, default: "en" },
   totalTimeCountdownInMinutes: { type: Number, default: 0 },
   pages: [
     {
-      id: { type: String, minlength: 1, maxlength: 64, required: true },
+      id: { type: String, minlength: 1, maxlength: 64 },
       rows: [
         {
-          id: { type: String, minlength: 1, maxlength: 64, required: true },
+          id: { type: String, minlength: 1, maxlength: 64 },
           columns: [
             {
-              id: { type: String, minlength: 1, maxlength: 64, required: true },
+              id: { type: String, minlength: 1, maxlength: 64 },
               question: {
                 id: {
                   type: String,
@@ -57,7 +56,7 @@ const QuestionnaireSchema = new Schema({
                   maxlength: 64,
                   required: true
                 },
-                questionType: { type: String, minlength: 1, required: true },
+                questionType: { type: String, minlength: 1 },
                 title: { type: String, minlength: 1 },
                 description: { type: String, minlength: 1 },
                 visible: { type: Boolean, default: true },

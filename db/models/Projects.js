@@ -5,7 +5,8 @@ require("mongoose-geojson-schema");
 const ProjectsSchema = new Schema({
   user_id: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Users"
+    ref: "Users",
+    required: true
   },
   created: {
     type: Date,

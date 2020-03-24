@@ -1,0 +1,810 @@
+{
+	"info": {
+		"_postman_id": "30e2612b-58fc-41d4-a567-5d274a671576",
+		"name": "Geobabel",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users (/)",
+			"item": [
+				{
+					"name": "Create user as administrator",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6054d2a7-e0bf-4e6c-a810-649a150e67f2",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    pm.environment.set(\"firstUserId\", pm.response.json()._id);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"auth_user_id\": \"51c35e5ced18cb901d000001\",\n\t\"roles\": \"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/api/users",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create user as normal user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6054d2a7-e0bf-4e6c-a810-649a150e67f2",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    pm.environment.set(\"secondUserId\", pm.response.json()._id);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"auth_user_id\": \"51c35e5ced18cb901d000002\",\n\t\"roles\": \"user\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/api/users",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6054d2a7-e0bf-4e6c-a810-649a150e67f2",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/api/users",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "User (/:id)",
+			"item": [
+				{
+					"name": "Get user by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bdc0f458-b713-4f04-861e-6ad031b4a55c",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/api/users/{{firstUserId}}",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"users",
+								"{{firstUserId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patch user by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3fd36c9a-cc77-4489-bd6d-7212247582be",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"roles\" : \"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/api/users/{{secondUserId}}",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"users",
+								"{{secondUserId}}"
+							]
+						},
+						"description": "Make the user from simple user -> administrator"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Projects (/)",
+			"item": [
+				{
+					"name": "Create project",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "68c575ec-dac1-4603-b062-23bcfa03e0d7",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.environment.set(\"projectID\", pm.response.json()._id);",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user_id\": \"{{firstUserId}}\",\r\n  \"created\": \"2020-03-24\",\r\n  \"duration\": {\r\n    \"from\": \"2020-03-01\",\r\n    \"to\": \"2020-04-01\"\r\n  },\r\n  \"area\": {\r\n      \"type\": \"Feature\",\r\n      \"properties\": {},\r\n      \"geometry\": {\r\n        \"type\": \"Polygon\",\r\n        \"coordinates\": [\r\n          [\r\n            [\r\n              21.456298828125,\r\n              40.12009038025332\r\n            ],\r\n            [\r\n              22.1044921875,\r\n              40.12009038025332\r\n            ],\r\n            [\r\n              22.1044921875,\r\n              40.54720023441049\r\n            ],\r\n            [\r\n              21.456298828125,\r\n              40.54720023441049\r\n            ],\r\n            [\r\n              21.456298828125,\r\n              40.12009038025332\r\n            ]\r\n          ]\r\n        ]\r\n      }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/api/projects",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all projects",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "290b1495-f426-4822-8cf3-0a780d755bde",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/api/projects",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"projects"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Project (/:id)",
+			"item": [
+				{
+					"name": "Get project by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c53b7493-2cb9-4433-9493-68126684a8ad",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/api/projects/{{projectID}}",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"projects",
+								"{{projectID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patch project by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3fd36c9a-cc77-4489-bd6d-7212247582be",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"duration\" : {\n\t\t\"from\" : \"2021-12-01\",\n\t\t\"to\" : \"2021-12-31\"\n\t}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/api/projects/{{projectID}}",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"projects",
+								"{{projectID}}"
+							]
+						},
+						"description": "Make the user from simple user -> administrator"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Questionnaires (/)",
+			"item": [
+				{
+					"name": "Create (post) one questionnaire",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4144eabf-71a1-4973-a232-7cf143e0f8a0",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.environment.set(\"questionnaireID\", pm.response.json()._id);",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"{{firstUserId}}\",\n    \"projectId\": \"{{secondUserId}}\",\n    \"creator\": {\n        \"email\": null\n    },\n    \"created\": null,\n    \"active\": true,\n    \"duration\": {\n        \"from\": \"1577880000\",\n        \"to\": \"1893499200\"\n    },\n    \"locale\": \"en\",\n    \"totalTimeCountdownInMinutes\": 5,\n    \"pages\": [],\n    \"logicRules\": [\n        {\n            \"ruleId\": \"1\",\n            \"expression\": \"test expression\",\n            \"action\": \"setting the action\"\n        }\n    ],\n    \"spatialProperties\": {\n        \"isTheMapActive\": true,\n        \"mapExtent\": [\n            1,\n            2,\n            3,\n            4\n        ]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/api/questionnaires",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"questionnaires"
+							]
+						},
+						"description": "localhost:3001/api/questionnaires"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all questionnaires",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d7ecc880-02a5-4890-9cbd-859f112f5f1d",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/api/questionnaires",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"questionnaires"
+							]
+						},
+						"description": "localhost:3001/api/questionnaires"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Questionnaire (/:id)",
+			"item": [
+				{
+					"name": "Patch questionnaire by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3fd36c9a-cc77-4489-bd6d-7212247582be",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"{{firstUserId}}\",\n    \"projectId\": \"{{secondUserId}}\",\n    \"creator\": {\n        \"email\": null\n    },\n    \"created\": null,\n    \"active\": true,\n    \"duration\": {\n        \"from\": \"2022-12-15\",\n        \"to\": \"2022-12-31\"\n    },\n    \"locale\": \"en\",\n    \"totalTimeCountdownInMinutes\": 5,\n    \"pages\": [],\n    \"logicRules\": [\n        {\n            \"ruleId\": \"1\",\n            \"expression\": \"test expression\",\n            \"action\": \"setting the action\"\n        }\n    ],\n    \"spatialProperties\": {\n        \"isTheMapActive\": true,\n        \"mapExtent\": [\n            1,\n            2,\n            3,\n            4\n        ]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/api/questionnaires/{{questionnaireID}}",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"questionnaires",
+								"{{questionnaireID}}"
+							]
+						},
+						"description": "Make the user from simple user -> administrator"
+					},
+					"response": []
+				},
+				{
+					"name": "Get questionnaire by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a9316045-e36a-4ff1-b61c-c378d92833f5",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/api/questionnaires/{{questionnaireID}}",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"questionnaires",
+								"{{questionnaireID}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Reset all",
+			"item": [
+				{
+					"name": "Delete questionnaire by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ab8af4f8-17f3-4a0e-adec-d16f3fc6b831",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/api/questionnaires/{{questionnaireID}}",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"questionnaires",
+								"{{questionnaireID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete project by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ab8af4f8-17f3-4a0e-adec-d16f3fc6b831",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/api/projects/{{projectID}}",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"projects",
+								"{{projectID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2e9b2c33-c4d9-41a4-b076-b23de6eb5935",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/api/users/{{secondUserId}}",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"users",
+								"{{secondUserId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete all questionnaires",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4144eabf-71a1-4973-a232-7cf143e0f8a0",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    // pm.response.to.have.status(200);",
+									"    pm.expect(pm.response.code).to.be.oneOf([200,202]);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/api/questionnaires",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"questionnaires"
+							]
+						},
+						"description": "localhost:3001/api/questionnaires"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete all projects",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7a38ffec-468a-440c-8e15-9a13a1722b90",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    // pm.response.to.have.status(200);",
+									"    pm.expect(pm.response.code).to.be.oneOf([200,202]);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/api/projects",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete all users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6054d2a7-e0bf-4e6c-a810-649a150e67f2",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(202);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/api/users",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

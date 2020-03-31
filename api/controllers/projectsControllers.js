@@ -1,3 +1,4 @@
+const HttpStatus = require("http-status-codes");
 const { ProjectsService } = require("../services");
 const SuperController = require("./SuperController");
 class ProjectsController extends SuperController {
@@ -7,7 +8,7 @@ class ProjectsController extends SuperController {
   }
   async findByUser(req, res, next) {
     try {
-      const result = await this.service.find(req.params.user_id);
+      const result = await this.service.findByUser(req.params.user_id);
       res.status(HttpStatus.OK).json(result);
     } catch (error) {
       next(error);
@@ -15,7 +16,7 @@ class ProjectsController extends SuperController {
   }
   async updateByUser(req, res, next) {
     try {
-      const result = await this.service.find(req.params.user_id);
+      const result = await this.service.updateByUser(req.params.user_id);
       res.status(HttpStatus.OK).json(result);
     } catch (error) {
       next(error);
@@ -23,18 +24,7 @@ class ProjectsController extends SuperController {
   }
   async deleteByUser(req, res, next) {
     try {
-      const result = await this.service.find(req.params.user_id);
-      res.status(HttpStatus.OK).json(result);
-    } catch (error) {
-      next(error);
-    }
-  }
-  async findByIds(req, res, next) {
-    try {
-      const result = await this.service.findById(
-        req.params.user_id,
-        req.params._id
-      );
+      const result = await this.service.deleteByUser(req.params.user_id);
       res.status(HttpStatus.OK).json(result);
     } catch (error) {
       next(error);

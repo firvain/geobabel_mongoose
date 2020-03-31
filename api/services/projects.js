@@ -1,6 +1,8 @@
 const { Projects, Users } = require("../../db/models");
 const { ErrorHandler } = require("../../helpers/error");
 const { isValid } = require("mongoose").Types.ObjectId;
+const { ObjectId } = require("mongoose").Types.ObjectId;
+
 const SuperService = require("./SuperService");
 class ProjectsService extends SuperService {
   constructor(model) {
@@ -24,16 +26,14 @@ class ProjectsService extends SuperService {
   }
   async findByUser(user_id) {
     try {
+      console.log("find by user");
+      console.log(user_id);
       if (!isValid(user_id)) throw new ErrorHandler(400, "invalid id");
-      const result = await this.model
-        .find({ user_id: ObjectId(user_id) })
-        .exec();
-      if (result) {
-        return result.toObject({
-          versionKey: false
-        });
+      const result = await Projects.find({ user_id: ObjectId(user_id) }).exec();
+      if (result.length > 0) {
+        return result;
       } else {
-        throw new ErrorHandler(404, "not found");
+        throw new ErrorHandler(404, "Projects for this user not found");
       }
     } catch (error) {
       throw error;
@@ -62,21 +62,6 @@ class ProjectsService extends SuperService {
       const result = await this.model
         .find({ user_id: ObjectId(user_id) })
         .exec();
-      if (result) {
-        return result.toObject({
-          versionKey: false
-        });
-      } else {
-        throw new ErrorHandler(404, "not found");
-      }
-    } catch (error) {
-      throw error;
-    }
-  }
-  async findByIds(user_id, _id) {
-    try {
-      if (!isValid(_id)) throw new ErrorHandler(400, "invalid id");
-      const result = await this.model.find({ user_id, _id }).exec();
       if (result) {
         return result.toObject({
           versionKey: false

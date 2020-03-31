@@ -19,12 +19,6 @@ module.exports = apiRouter => {
     .delete(ProjectsControllers.deleteById.bind(ProjectsControllers));
 
   projectRouter
-    .route("/:user_id/:_id")
-    .get(ProjectsControllers.findById.bind(ProjectsControllers))
-    .patch(ProjectsControllers.updateById.bind(ProjectsControllers))
-    .delete(ProjectsControllers.deleteById.bind(ProjectsControllers));
-
-  projectRouter
     .route("/user/:user_id")
     .get(ProjectsControllers.findByUser.bind(ProjectsControllers))
     .patch(ProjectsControllers.updateByUser.bind(ProjectsControllers))

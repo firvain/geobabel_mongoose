@@ -1,6 +1,5 @@
 const { ErrorHandler } = require("../../helpers/error");
 const { isValid } = require("mongoose").Types.ObjectId;
-const { ObjectId } = require("mongoose").Types.ObjectId;
 
 module.exports = class SuperService {
   constructor(model) {

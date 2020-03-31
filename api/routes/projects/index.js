@@ -24,6 +24,12 @@ module.exports = apiRouter => {
     .patch(ProjectsControllers.updateById.bind(ProjectsControllers))
     .delete(ProjectsControllers.deleteById.bind(ProjectsControllers));
 
+  projectRouter
+    .route("/user/:user_id")
+    .get(ProjectsControllers.findByUser.bind(ProjectsControllers))
+    .patch(ProjectsControllers.updateByUser.bind(ProjectsControllers))
+    .delete(ProjectsControllers.deleteByUser.bind(ProjectsControllers));
+
   apiRouter.use((err, req, res, next) => {
     next(err);
   });

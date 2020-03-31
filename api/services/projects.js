@@ -22,5 +22,71 @@ class ProjectsService extends SuperService {
       throw error;
     }
   }
+  async findByUser(user_id) {
+    try {
+      if (!isValid(user_id)) throw new ErrorHandler(400, "invalid id");
+      const result = await this.model
+        .find({ user_id: ObjectId(user_id) })
+        .exec();
+      if (result) {
+        return result.toObject({
+          versionKey: false
+        });
+      } else {
+        throw new ErrorHandler(404, "not found");
+      }
+    } catch (error) {
+      throw error;
+    }
+  }
+  async updateByUser(user_id) {
+    try {
+      if (!isValid(user_id)) throw new ErrorHandler(400, "invalid id");
+      const result = await this.model
+        .find({ user_id: ObjectId(user_id) })
+        .exec();
+      if (result) {
+        return result.toObject({
+          versionKey: false
+        });
+      } else {
+        throw new ErrorHandler(404, "not found");
+      }
+    } catch (error) {
+      throw error;
+    }
+  }
+  async deleteByUser(user_id) {
+    try {
+      if (!isValid(user_id)) throw new ErrorHandler(400, "invalid id");
+      const result = await this.model
+        .find({ user_id: ObjectId(user_id) })
+        .exec();
+      if (result) {
+        return result.toObject({
+          versionKey: false
+        });
+      } else {
+        throw new ErrorHandler(404, "not found");
+      }
+    } catch (error) {
+      throw error;
+    }
+  }
+  async findByIds(user_id, _id) {
+    try {
+      if (!isValid(_id)) throw new ErrorHandler(400, "invalid id");
+      const result = await this.model.find({ user_id, _id }).exec();
+      if (result) {
+        return result.toObject({
+          versionKey: false
+        });
+      } else {
+        throw new ErrorHandler(404, "not found");
+      }
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 module.exports = new ProjectsService(Projects);

@@ -1,5 +1,6 @@
 const { ErrorHandler } = require("../../helpers/error");
 const { isValid } = require("mongoose").Types.ObjectId;
+const { ObjectId } = require("mongoose").Types.ObjectId;
 
 module.exports = class SuperService {
   constructor(model) {
@@ -44,22 +45,6 @@ module.exports = class SuperService {
     try {
       if (!isValid(_id)) throw new ErrorHandler(400, "invalid id");
       const result = await this.model.findById({ _id }).exec();
-      if (result) {
-        return result.toObject({
-          versionKey: false
-        });
-      } else {
-        throw new ErrorHandler(404, "not found");
-      }
-    } catch (error) {
-      throw error;
-    }
-  }
-
-  async findByIds(user_id, _id) {
-    try {
-      if (!isValid(_id)) throw new ErrorHandler(400, "invalid id");
-      const result = await this.model.find({ user_id, _id }).exec();
       if (result) {
         return result.toObject({
           versionKey: false

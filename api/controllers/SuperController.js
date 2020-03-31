@@ -36,17 +36,6 @@ module.exports = class SuperController {
       next(error);
     }
   }
-  async findByIds(req, res, next) {
-    try {
-      const result = await this.service.findById(
-        req.params.user_id,
-        req.params._id
-      );
-      res.status(HttpStatus.OK).json(result);
-    } catch (error) {
-      next(error);
-    }
-  }
   async deleteById(req, res, next) {
     try {
       const result = await this.service.deleteById(req.params._id);

@@ -360,6 +360,42 @@
 					"response": []
 				},
 				{
+					"name": "Get project by project id  and user id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c53b7493-2cb9-4433-9493-68126684a8ad",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    console.log(pm.response);",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/api/projects/{{firstUserId}}/{{projectID}}",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"projects",
+								"{{firstUserId}}",
+								"{{projectID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Patch project by id",
 					"event": [
 						{

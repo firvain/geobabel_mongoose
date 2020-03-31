@@ -59,7 +59,7 @@ module.exports = class SuperService {
   async findByIds(user_id, _id) {
     try {
       if (!isValid(_id)) throw new ErrorHandler(400, "invalid id");
-      const result = await this.model.findById({ user_id, _id }).exec();
+      const result = await this.model.find({ user_id, _id }).exec();
       if (result) {
         return result.toObject({
           versionKey: false

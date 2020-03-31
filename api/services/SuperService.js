@@ -56,6 +56,22 @@ module.exports = class SuperService {
     }
   }
 
+  async findByIds(user_id, _id) {
+    try {
+      if (!isValid(_id)) throw new ErrorHandler(400, "invalid id");
+      const result = await this.model.findById({ user_id, _id }).exec();
+      if (result) {
+        return result.toObject({
+          versionKey: false
+        });
+      } else {
+        throw new ErrorHandler(404, "not found");
+      }
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async deleteById(_id) {
     try {
       if (!isValid(_id)) throw new ErrorHandler(400, "invalid id");

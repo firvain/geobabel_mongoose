@@ -4,12 +4,12 @@ require("mongoose-type-email");
 require("mongoose-geojson-schema");
 
 const QuestionnaireSchema = new Schema({
-  userId: {
+  user_id: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Users",
     required: true
   },
-  projectId: {
+  project_id: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Projects",
     required: true

@@ -13,7 +13,7 @@ module.exports = class SuperController {
   }
   async getAll(req, res, next) {
     try {
-      const result = await this.service.getAll();
+      const result = await this.service.getAll(req.query);
       res.status(HttpStatus.OK).json(result);
     } catch (error) {
       next(error);

@@ -13,15 +13,16 @@ module.exports = class SuperService {
     }
   }
 
-  async getAll() {
+  async getAll(query) {
+    console.log(query);
     try {
-      const result = (await this.model.find({}).exec()).map(e =>
+      const result = (await this.model.find(query).exec()).map(e =>
         e.toObject({ versionKey: false })
       );
       if (result.length > 0) {
         return result;
       } else {
-        throw new ErrorHandler(404, "Empty");
+        throw new ErrorHandler(404, "not found");
       }
     } catch (error) {
       throw error;
@@ -41,6 +42,7 @@ module.exports = class SuperService {
   }
 
   async findById(_id) {
+    console.log(_id);
     try {
       if (!isValid(_id)) throw new ErrorHandler(400, "invalid id");
       const result = await this.model.findById({ _id }).exec();

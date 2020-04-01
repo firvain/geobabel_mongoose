@@ -3,8 +3,8 @@ const Schema = mongoose.Schema;
 require("mongoose-geojson-schema");
 
 const ProjectsSchema = new Schema({
-  title: { type: String, required: true, default: "Untitled" },
-  description: { type: String, default: "No description" },
+  title: { type: String, required: true },
+  description: { type: String },
   user_id: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Users",

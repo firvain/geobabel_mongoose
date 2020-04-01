@@ -6,25 +6,31 @@ class ProjectsController extends SuperController {
     super(service);
     this.service = service;
   }
-  async findByUser(req, res, next) {
+  async findByUserId(req, res, next) {
     try {
-      const result = await this.service.findByUser(req.params.user_id);
+      const result = await this.service.findByUserId(req.params._id, req.query);
       res.status(HttpStatus.OK).json(result);
     } catch (error) {
       next(error);
     }
   }
-  async updateByUser(req, res, next) {
+
+  async deleteAllByUserId(req, res, next) {
     try {
-      const result = await this.service.updateByUser(req.params.user_id);
-      res.status(HttpStatus.OK).json(result);
+      const result = await this.service.deleteAllByUserId(req.params._id);
+      res.status(HttpStatus.OK).json(`deleted ${result} records`);
     } catch (error) {
       next(error);
     }
   }
-  async deleteByUser(req, res, next) {
+  async findByUserIdAndProjectId(req, res, next) {
+    const user_id = req.params._id;
+    const project_id = req.params.project_id;
     try {
-      const result = await this.service.deleteByUser(req.params.user_id);
+      const result = await this.service.findByUserIdAndProjectId({
+        user_id,
+        project_id
+      });
       res.status(HttpStatus.OK).json(result);
     } catch (error) {
       next(error);

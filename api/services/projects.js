@@ -25,10 +25,9 @@ class ProjectsService extends SuperService {
     }
   }
   async findByUser(user_id) {
+    console.log("find by user id::", user_id);
     try {
-      console.log("find by user");
-      console.log(user_id);
-      if (!isValid(user_id)) throw new ErrorHandler(400, "invalid id");
+      if (!isValid(user_id)) throw new ErrorHandler(400, "invalid user id");
       const result = await Projects.find({ user_id: ObjectId(user_id) }).exec();
       if (result.length > 0) {
         return result;
@@ -39,35 +38,62 @@ class ProjectsService extends SuperService {
       throw error;
     }
   }
-  async updateByUser(user_id) {
+  async findByUserAndId(user_id, _id) {
+    console.log("find by user id::", user_id, _id);
     try {
-      if (!isValid(user_id)) throw new ErrorHandler(400, "invalid id");
-      const result = await this.model
-        .find({ user_id: ObjectId(user_id) })
-        .exec();
-      if (result) {
-        return result.toObject({
-          versionKey: false
-        });
+      if (!isValid(user_id)) throw new ErrorHandler(400, "invalid user id");
+      const result = await Projects.find({
+        _id,
+        user_id: ObjectId(user_id)
+      }).exec();
+      if (result.length > 0) {
+        return result;
       } else {
-        throw new ErrorHandler(404, "not found");
+        throw new ErrorHandler(404, "Projects for this user not found");
       }
     } catch (error) {
       throw error;
     }
   }
-  async deleteByUser(user_id) {
+  async updateByUserAndId(user_id, _id, data) {
+    console.log("update by user id::", user_id, _id, data);
+    if (!isValid(_id)) throw new ErrorHandler(400, "invalid project id");
+    if (!isValid(user_id)) throw new ErrorHandler(400, "invalid user id");
     try {
-      if (!isValid(user_id)) throw new ErrorHandler(400, "invalid id");
       const result = await this.model
-        .find({ user_id: ObjectId(user_id) })
+        .findOneAndUpdate(
+          { _id, user_id: ObjectId(user_id) },
+          { $set: data },
+          {
+            new: true
+          }
+        )
         .exec();
+      if (result) {
+        return result.toObject({ versionKey: false });
+      } else {
+        throw new ErrorHandler(404, "project not found");
+      }
+    } catch (error) {
+      throw error;
+    }
+  }
+  async deleteByUserAndId(user_id, _id) {
+    console.log("delete by user id::", user_id, _id);
+    if (!isValid(_id)) throw new ErrorHandler(400, "invalid project id");
+    if (!isValid(user_id)) throw new ErrorHandler(400, "invalid user id");
+    try {
+      const result = await this.model.findOneAndDelete({
+        _id,
+        user_id: ObjectId(user_id)
+      });
+
       if (result) {
         return result.toObject({
           versionKey: false
         });
       } else {
-        throw new ErrorHandler(404, "not found");
+        throw new ErrorHandler(404, "project not found");
       }
     } catch (error) {
       throw error;

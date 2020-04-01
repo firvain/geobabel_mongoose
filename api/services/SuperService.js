@@ -57,8 +57,8 @@ module.exports = class SuperService {
   }
 
   async deleteById(_id) {
+    if (!isValid(_id)) throw new ErrorHandler(400, "invalid id");
     try {
-      if (!isValid(_id)) throw new ErrorHandler(400, "invalid id");
       const result = await this.model.findOneAndDelete({ _id });
 
       if (result) {

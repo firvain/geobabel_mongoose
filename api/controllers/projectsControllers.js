@@ -14,17 +14,35 @@ class ProjectsController extends SuperController {
       next(error);
     }
   }
-  async updateByUser(req, res, next) {
+  async findByUserAndId(req, res, next) {
     try {
-      const result = await this.service.updateByUser(req.params.user_id);
+      const result = await this.service.findByUserAndId(
+        req.params.user_id,
+        req.params._id
+      );
       res.status(HttpStatus.OK).json(result);
     } catch (error) {
       next(error);
     }
   }
-  async deleteByUser(req, res, next) {
+  async updateByUserAndId(req, res, next) {
     try {
-      const result = await this.service.deleteByUser(req.params.user_id);
+      const result = await this.service.updateByUserAndId(
+        req.params.user_id,
+        req.params._id,
+        req.body
+      );
+      res.status(HttpStatus.OK).json(result);
+    } catch (error) {
+      next(error);
+    }
+  }
+  async deleteByUserAndId(req, res, next) {
+    try {
+      const result = await this.service.deleteByUserAndId(
+        req.params.user_id,
+        req.params._id
+      );
       res.status(HttpStatus.OK).json(result);
     } catch (error) {
       next(error);

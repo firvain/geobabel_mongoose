@@ -25,7 +25,6 @@ class ProjectsService extends SuperService {
     }
   }
   async findByUser(user_id) {
-    console.log("find by user id::", user_id);
     try {
       if (!isValid(user_id)) throw new ErrorHandler(400, "invalid user id");
       const result = await Projects.find({ user_id: ObjectId(user_id) }).exec();
@@ -39,7 +38,6 @@ class ProjectsService extends SuperService {
     }
   }
   async findByUserAndId(user_id, _id) {
-    console.log("find by user id::", user_id, _id);
     try {
       if (!isValid(user_id)) throw new ErrorHandler(400, "invalid user id");
       const result = await Projects.find({
@@ -56,7 +54,6 @@ class ProjectsService extends SuperService {
     }
   }
   async updateByUserAndId(user_id, _id, data) {
-    console.log("update by user id::", user_id, _id, data);
     if (!isValid(_id)) throw new ErrorHandler(400, "invalid project id");
     if (!isValid(user_id)) throw new ErrorHandler(400, "invalid user id");
     try {
@@ -79,7 +76,6 @@ class ProjectsService extends SuperService {
     }
   }
   async deleteByUserAndId(user_id, _id) {
-    console.log("delete by user id::", user_id, _id);
     if (!isValid(_id)) throw new ErrorHandler(400, "invalid project id");
     if (!isValid(user_id)) throw new ErrorHandler(400, "invalid user id");
     try {

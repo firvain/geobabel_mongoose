@@ -1,0 +1,1591 @@
+{
+	"info": {
+		"_postman_id": "24f9bf89-66ca-4696-a41f-cf92680627e6",
+		"name": "GeoBabel API",
+		"description": "# Introduction\nThis is API to support GeoBabel\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests an user can send?",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "projects",
+					"item": [
+						{
+							"name": "Get Projects By User id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/users/5e848fc0eac19a4804b7b7cc/projects",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"users",
+										"5e848fc0eac19a4804b7b7cc",
+										"projects"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Project By User id And Project Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/users/5e848fc0eac19a4804b7b7cc/projects/5e849d270b20931ed3d3d09b",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"users",
+										"5e848fc0eac19a4804b7b7cc",
+										"projects",
+										"5e849d270b20931ed3d3d09b"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete All Projects By User id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/users/5e848fc0eac19a4804b7b7cc/projects",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"users",
+										"5e848fc0eac19a4804b7b7cc",
+										"projects"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Get Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users?roles=admin",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "roles",
+									"value": "admin"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users/5e84644a6e6a6610eca2a62d",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"5e84644a6e6a6610eca2a62d"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get all Users",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/users",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "232"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e8-0l+IGkQnWgJsFhC0Xit6+T1iyCU\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Feb 2020 11:22:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"_id\": \"5e5780882b314051aa0d99e8\",\n        \"auth_user_id\": \"5e577efec7652d514cf85d02\"\n    },\n    {\n        \"_id\": \"5e57c1760073726241573f3e\",\n        \"auth_user_id\": \"5e5780882b314051aa0d99e8\"\n    },\n    {\n        \"_id\": \"5e57d428fdbfbc6e8cc5491f\",\n        \"auth_user_id\": \"5e5780882b314051aa0d99e8\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Delete User by Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users/5e58fc002ed8d584191f9ec6",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"5e58fc002ed8d584191f9ec6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete All Users",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users/5e58fc002ed8d584191f9ec6",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"5e58fc002ed8d584191f9ec6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "auth_user_id",
+									"value": "5e57c1760073726241573fd4",
+									"type": "text"
+								},
+								{
+									"key": "roles",
+									"value": "23",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "javascript"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User by Id",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "roles",
+									"value": "101",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "auth_user_id",
+									"value": "5e57c1760073726241573fd9",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "javascript"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/5e58fdc70225cd846d65dbc7",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"5e58fdc70225cd846d65dbc7"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "projects",
+			"item": [
+				{
+					"name": "Delete All Projects",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}/projects",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"projects"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Empty Projects Table",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{url}}/projects",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"projects"
+									]
+								}
+							},
+							"status": "Accepted",
+							"code": 202,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "14"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e-qhqRYwO2raVMTewnzbMYci3TigA\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Feb 2020 08:38:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "\"Deleted all!\""
+						}
+					]
+				},
+				{
+					"name": "Get Projects",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/projects",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Project",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": \"5e848fc0eac19a4804b7b7cc\",\n    \"title\": \"test5\",\n    \"creator\": {\n    \t\"email\": \"test@test.com\"\n    },\n    \"created\": \"2020-02-30\",\n    \"duration\": {\n    \t\"from\": \"2020-02-30T00:01\",\n    \t\"to\":\"2020-03-30T23:59\"\n    },\n    \"area\": {\n        \"type\": \"Feature\",\n        \"geometry\": {\n            \"type\": \"Polygon\",\n            \"coordinates\": [\n                [\n                    [\n                        100,\n                        0\n                    ],\n                    [\n                        101,\n                        0\n                    ],\n                    [\n                        101,\n                        1\n                    ],\n                    [\n                        100,\n                        1\n                    ],\n                    [\n                        100,\n                        0\n                    ]\n                ]\n            ]\n        },\n        \"properties\": {\n            \"prop0\": \"value0\",\n            \"prop1\": {\n                \"this\": \"that\"\n            }\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/projects",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"projects"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Project",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"user_id\": \"5e5780882b314051aa0d99e8\",\n    \"creator\": {\n    \t\"email\": \"test@test.com\"\n    },\n    \"created\": \"2020-02-30\",\n    \"duration\": {\n    \t\"from\": \"2020-02-30T00:01\",\n    \t\"to\":\"2020-03-30T23:59\"\n    },\n    \"area\": {\n        \"type\": \"Feature\",\n        \"geometry\": {\n            \"type\": \"Polygon\",\n            \"coordinates\": [\n                [\n                    [\n                        100,\n                        0\n                    ],\n                    [\n                        101,\n                        0\n                    ],\n                    [\n                        101,\n                        1\n                    ],\n                    [\n                        100,\n                        1\n                    ],\n                    [\n                        100,\n                        0\n                    ]\n                ]\n            ]\n        },\n        \"properties\": {\n            \"prop0\": \"value0\",\n            \"prop1\": {\n                \"this\": \"that\"\n            }\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/projects",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"projects"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "34"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"22-szwZavT5kPQ03MpRWJYQDnRi1yo\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Feb 2020 08:40:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"5e58d1ea79daca7599b6cf0c\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Find Project By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/projects/5e58ccf51379a77463a8cba2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"projects",
+								"5e58ccf51379a77463a8cba2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Find Project By Id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/projects/5e58cf7a1379a77463a8cbaa",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"projects",
+										"5e58cf7a1379a77463a8cbaa"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "393"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"189-qhXhot/Rw20xegF9cLn2JXgrsnY\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Feb 2020 08:37:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"creator\": {\n        \"email\": \"test@test.com\"\n    },\n    \"duration\": {\n        \"from\": \"2020-02-29T22:01:00.000Z\",\n        \"to\": \"2020-03-30T20:59:00.000Z\"\n    },\n    \"_id\": \"5e58cf7a1379a77463a8cbaa\",\n    \"user_id\": \"5e5780882b314051aa0d99e8\",\n    \"created\": \"2030-01-01T00:00:00.000Z\",\n    \"area\": {\n        \"type\": \"Feature\",\n        \"geometry\": {\n            \"type\": \"Polygon\",\n            \"coordinates\": [\n                [\n                    [\n                        100,\n                        0\n                    ],\n                    [\n                        101,\n                        0\n                    ],\n                    [\n                        101,\n                        1\n                    ],\n                    [\n                        100,\n                        1\n                    ],\n                    [\n                        100,\n                        0\n                    ]\n                ]\n            ]\n        },\n        \"properties\": {\n            \"prop0\": \"value0\",\n            \"prop1\": {\n                \"this\": \"that\"\n            }\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Project By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/projects/5e58ccf51379a77463a8cba2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"projects",
+								"5e58ccf51379a77463a8cba2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Project By Id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/projects/5e58d1ea79daca7599b6cf0c",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"projects",
+										"5e58d1ea79daca7599b6cf0c"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "393"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"189-2JRx6TXRyJDULia3DBDXX86k+Zw\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Feb 2020 08:41:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"creator\": {\n        \"email\": \"test@test.com\"\n    },\n    \"duration\": {\n        \"from\": \"2020-02-29T22:01:00.000Z\",\n        \"to\": \"2020-03-30T20:59:00.000Z\"\n    },\n    \"_id\": \"5e58d1ea79daca7599b6cf0c\",\n    \"user_id\": \"5e5780882b314051aa0d99e8\",\n    \"created\": \"2020-03-01T00:00:00.000Z\",\n    \"area\": {\n        \"type\": \"Feature\",\n        \"geometry\": {\n            \"type\": \"Polygon\",\n            \"coordinates\": [\n                [\n                    [\n                        100,\n                        0\n                    ],\n                    [\n                        101,\n                        0\n                    ],\n                    [\n                        101,\n                        1\n                    ],\n                    [\n                        100,\n                        1\n                    ],\n                    [\n                        100,\n                        0\n                    ]\n                ]\n            ]\n        },\n        \"properties\": {\n            \"prop0\": \"value0\",\n            \"prop1\": {\n                \"this\": \"that\"\n            }\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Project by Id",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "created",
+									"value": "2030-01-01",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "javascript"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/projects/5e58cf7a1379a77463a8cbaa",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"projects",
+								"5e58cf7a1379a77463a8cbaa"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "questionnairies",
+			"item": [
+				{
+					"name": "Empty Questionnaires Table",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}/questionnaires/empty",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"questionnaires",
+								"empty"
+							]
+						},
+						"description": "Empty Questionnaires table"
+					},
+					"response": [
+						{
+							"name": "Empty Questionnaires Table",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{url}}/questionnaires",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"questionnaires"
+									]
+								}
+							},
+							"status": "Accepted",
+							"code": 202,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "14"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e-qhqRYwO2raVMTewnzbMYci3TigA\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Feb 2020 08:42:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "\"Deleted all!\""
+						},
+						{
+							"name": "Empty Questionnaires Table",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{url}}/questionnaires/empty",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"questionnaires",
+										"empty"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "28"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1c-A+5ySPctrjZRdc/bxtDF2sX1kYI\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 22 Oct 2019 08:22:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Questionnaires Table Emptied"
+						}
+					]
+				},
+				{
+					"name": "Find all Questionnaires by User and Project",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/questionnaires/users/:userId/projects/:projectId",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"questionnaires",
+								"users",
+								":userId",
+								"projects",
+								":projectId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "1",
+									"description": "User Id"
+								},
+								{
+									"key": "projectId",
+									"value": "1",
+									"description": "Project Id"
+								}
+							]
+						},
+						"description": "fetch all project details"
+					},
+					"response": [
+						{
+							"name": "Find all Questionnaires by User and Project",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/questionnaires/users/:userId/projects/:projectId",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"questionnaires",
+										"users",
+										":userId",
+										"projects",
+										":projectId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "1"
+										},
+										{
+											"key": "projectId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "685"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2ad-1YWxshoww77Bl9m8X/3xroiPu7A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 22 Oct 2019 08:22:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"title\": \"Questionnaire 1\",\n        \"description\": \"First Questionnaire\",\n        \"date\": \"[2015-06-07,2016-08-09)\",\n        \"questions\": [\n            {\n                \"id\": 1,\n                \"text\": \"Question 1\",\n                \"type\": 1,\n                \"choices\": [],\n                \"choicesNum\": 0,\n                \"hasGeography\": true\n            },\n            {\n                \"id\": 2,\n                \"text\": \"Question 2 Multiple choice\",\n                \"type\": 2,\n                \"choices\": [\n                    {\n                        \"id\": 1,\n                        \"text\": \"a\",\n                        \"value\": \"a\"\n                    },\n                    {\n                        \"id\": 2,\n                        \"text\": \"b\",\n                        \"value\": \"b\"\n                    },\n                    {\n                        \"id\": 3,\n                        \"text\": \"c\",\n                        \"value\": \"c\"\n                    }\n                ],\n                \"choicesNum\": 3,\n                \"hasGeography\": true\n            },\n            {\n                \"id\": 3,\n                \"text\": \"Question 3 rate\",\n                \"type\": 3,\n                \"choices\": [\n                    {\n                        \"id\": 1,\n                        \"text\": \"a\",\n                        \"value\": \"a\"\n                    },\n                    {\n                        \"id\": 2,\n                        \"text\": \"b\",\n                        \"value\": \"b\"\n                    },\n                    {\n                        \"id\": 3,\n                        \"text\": \"c\",\n                        \"value\": \"c\"\n                    },\n                    {\n                        \"id\": 4,\n                        \"text\": \"d\",\n                        \"value\": \"d\"\n                    }\n                ],\n                \"choicesNum\": 4,\n                \"hasGeography\": false\n            }\n        ],\n        \"auxlayers\": [\n            200,\n            100\n        ],\n        \"published\": true,\n        \"projectId\": 1,\n        \"userId\": 1\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Find all Questionnaires",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/questionnaires/users/:userId/projects/:projectId",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"questionnaires",
+								"users",
+								":userId",
+								"projects",
+								":projectId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "1",
+									"description": "User Id"
+								},
+								{
+									"key": "projectId",
+									"value": "1",
+									"description": "Project Id"
+								}
+							]
+						},
+						"description": "fetch all project details"
+					},
+					"response": [
+						{
+							"name": "Find all Questionnaires by User and Project",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/questionnaires/users/:userId/projects/:projectId",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"questionnaires",
+										"users",
+										":userId",
+										"projects",
+										":projectId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "1"
+										},
+										{
+											"key": "projectId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "685"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2ad-1YWxshoww77Bl9m8X/3xroiPu7A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 22 Oct 2019 08:22:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"title\": \"Questionnaire 1\",\n        \"description\": \"First Questionnaire\",\n        \"date\": \"[2015-06-07,2016-08-09)\",\n        \"questions\": [\n            {\n                \"id\": 1,\n                \"text\": \"Question 1\",\n                \"type\": 1,\n                \"choices\": [],\n                \"choicesNum\": 0,\n                \"hasGeography\": true\n            },\n            {\n                \"id\": 2,\n                \"text\": \"Question 2 Multiple choice\",\n                \"type\": 2,\n                \"choices\": [\n                    {\n                        \"id\": 1,\n                        \"text\": \"a\",\n                        \"value\": \"a\"\n                    },\n                    {\n                        \"id\": 2,\n                        \"text\": \"b\",\n                        \"value\": \"b\"\n                    },\n                    {\n                        \"id\": 3,\n                        \"text\": \"c\",\n                        \"value\": \"c\"\n                    }\n                ],\n                \"choicesNum\": 3,\n                \"hasGeography\": true\n            },\n            {\n                \"id\": 3,\n                \"text\": \"Question 3 rate\",\n                \"type\": 3,\n                \"choices\": [\n                    {\n                        \"id\": 1,\n                        \"text\": \"a\",\n                        \"value\": \"a\"\n                    },\n                    {\n                        \"id\": 2,\n                        \"text\": \"b\",\n                        \"value\": \"b\"\n                    },\n                    {\n                        \"id\": 3,\n                        \"text\": \"c\",\n                        \"value\": \"c\"\n                    },\n                    {\n                        \"id\": 4,\n                        \"text\": \"d\",\n                        \"value\": \"d\"\n                    }\n                ],\n                \"choicesNum\": 4,\n                \"hasGeography\": false\n            }\n        ],\n        \"auxlayers\": [\n            200,\n            100\n        ],\n        \"published\": true,\n        \"projectId\": 1,\n        \"userId\": 1\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Find Questionnaire by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/questionnaires/users/:userId/projects/:projectId/:questionnaireId",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"questionnaires",
+								"users",
+								":userId",
+								"projects",
+								":projectId",
+								":questionnaireId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "1"
+								},
+								{
+									"key": "projectId",
+									"value": "1"
+								},
+								{
+									"key": "questionnaireId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Find Questionnaire by Id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/questionnaires/users/:userId/projects/:projectId/:questionnaireId",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"questionnaires",
+										"users",
+										":userId",
+										"projects",
+										":projectId",
+										":questionnaireId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "1"
+										},
+										{
+											"key": "projectId",
+											"value": "1"
+										},
+										{
+											"key": "questionnaireId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "683"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2ab-+FKxoyhB5i41sSPgvcumEF+ucMA\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 22 Oct 2019 08:23:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"title\": \"Questionnaire 1\",\n    \"description\": \"First Questionnaire\",\n    \"date\": [\n        \"2015-06-07,2016-08-09\"\n    ],\n    \"questions\": [\n        {\n            \"id\": 1,\n            \"text\": \"Question 1\",\n            \"type\": 1,\n            \"choices\": [],\n            \"choicesNum\": 0,\n            \"hasGeography\": true\n        },\n        {\n            \"id\": 2,\n            \"text\": \"Question 2 Multiple choice\",\n            \"type\": 2,\n            \"choices\": [\n                {\n                    \"id\": 1,\n                    \"text\": \"a\",\n                    \"value\": \"a\"\n                },\n                {\n                    \"id\": 2,\n                    \"text\": \"b\",\n                    \"value\": \"b\"\n                },\n                {\n                    \"id\": 3,\n                    \"text\": \"c\",\n                    \"value\": \"c\"\n                }\n            ],\n            \"choicesNum\": 3,\n            \"hasGeography\": true\n        },\n        {\n            \"id\": 3,\n            \"text\": \"Question 3 rate\",\n            \"type\": 3,\n            \"choices\": [\n                {\n                    \"id\": 1,\n                    \"text\": \"a\",\n                    \"value\": \"a\"\n                },\n                {\n                    \"id\": 2,\n                    \"text\": \"b\",\n                    \"value\": \"b\"\n                },\n                {\n                    \"id\": 3,\n                    \"text\": \"c\",\n                    \"value\": \"c\"\n                },\n                {\n                    \"id\": 4,\n                    \"text\": \"d\",\n                    \"value\": \"d\"\n                }\n            ],\n            \"choicesNum\": 4,\n            \"hasGeography\": false\n        }\n    ],\n    \"auxlayers\": [\n        200,\n        100\n    ],\n    \"published\": true,\n    \"projectId\": 1,\n    \"userId\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Questionnaire by Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/questionnaires/users/:userId/projects/:projectId/:questionnaireId",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"questionnaires",
+								"users",
+								":userId",
+								"projects",
+								":projectId",
+								":questionnaireId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "1"
+								},
+								{
+									"key": "projectId",
+									"value": "1"
+								},
+								{
+									"key": "questionnaireId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Questionnaire by Id",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/questionnaires/users/:userId/projects/:projectId/:questionnaireId",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"questionnaires",
+										"users",
+										":userId",
+										"projects",
+										":projectId",
+										":questionnaireId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "1"
+										},
+										{
+											"key": "projectId",
+											"value": "1"
+										},
+										{
+											"key": "questionnaireId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1-NWoZK3kTsExUV00Ywo1G5jlUKKs\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 22 Oct 2019 08:40:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "1"
+						}
+					]
+				},
+				{
+					"name": "Delete All Questionnaires by Project",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/questionnaires/users/:userId/projects/:projectId",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"questionnaires",
+								"users",
+								":userId",
+								"projects",
+								":projectId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "1",
+									"description": "User Id"
+								},
+								{
+									"key": "projectId",
+									"value": "2",
+									"description": "Project Id"
+								}
+							]
+						},
+						"description": "Delete All Questionnaires by ProjectId and UserId"
+					},
+					"response": [
+						{
+							"name": "Delete All Questionnaires by Project",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/questionnaires/users/:userId/projects/:projectId",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"questionnaires",
+										"users",
+										":userId",
+										"projects",
+										":projectId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "1"
+										},
+										{
+											"key": "projectId",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1-NWoZK3kTsExUV00Ywo1G5jlUKKs\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 22 Oct 2019 08:41:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "1"
+						}
+					]
+				},
+				{
+					"name": "Create new Questionnaire",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Questionnaires",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "3a521c5b-3297-4296-aa58-a7e5fdd57384",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "5d6a2b08-5c00-4fab-ad0f-fd6a4959a860",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "5ac3cb5a-ec2a-4a24-b971-b330de463488",
+			"key": "url",
+			"value": "http://localhost:3001/api",
+			"type": "string"
+		},
+		{
+			"id": "a2e1d695-6677-4a99-b21e-dcd03ec38fca",
+			"key": "userId",
+			"value": "1",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"id": "43aa68b3-f32f-402a-a7e1-11d83bade5d4",
+			"key": "projectId",
+			"value": "1",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"id": "ac331b2c-a625-4413-a2de-8f2285ca9b66",
+			"key": "questionnaireId",
+			"value": "1",
+			"type": "string",
+			"disabled": true
+		}
+	],
+	"protocolProfileBehavior": {}
+}

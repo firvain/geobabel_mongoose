@@ -7,6 +7,7 @@ class ProjectsController extends SuperController {
     this.service = service;
   }
   async findByUserId(req, res, next) {
+    console.log(req.params);
     try {
       const result = await this.service.findByUserId(req.params._id, req.query);
       res.status(HttpStatus.OK).json(result);
@@ -26,6 +27,7 @@ class ProjectsController extends SuperController {
   async findByUserIdAndProjectId(req, res, next) {
     const user_id = req.params._id;
     const project_id = req.params.project_id;
+    console.log(req.params);
     try {
       const result = await this.service.findByUserIdAndProjectId({
         user_id,

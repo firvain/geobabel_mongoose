@@ -23,10 +23,10 @@ const ProjectsSchema = new Schema({
     to: {
       type: Date
     }
-  },
-  area: {
-    type: mongoose.Schema.Types.Feature
   }
+  // area: {
+  //   type: mongoose.Schema.Types.Feature
+  // }
 });
 // ProjectsSchema.pre("save", function(next) {
 //   console.log(this.user_id);

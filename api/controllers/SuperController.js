@@ -12,6 +12,7 @@ module.exports = class SuperController {
     }
   }
   async getAll(req, res, next) {
+    console.log("req: ", req.params);
     try {
       const result = await this.service.getAll(req.query);
       res.status(HttpStatus.OK).json(result);

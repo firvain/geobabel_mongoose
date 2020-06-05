@@ -1,8 +1,13 @@
 const userRouter = require("express").Router();
 const projectRouter = require("express").Router({ mergeParams: true });
+const questionnaireRouter = require("express").Router({ mergeParams: true });
 // const guard = require("express-jwt-permissions")();
 // const { director } = require("../../../permissions");
-const { UsersControllers, ProjectsControllers } = require("../../controllers");
+const {
+  UsersControllers,
+  ProjectsControllers,
+  QuestionnairesControllers
+} = require("../../controllers");
 
 module.exports = apiRouter => {
   // apiRouter.use("/projects", projectRouter);
@@ -28,6 +33,17 @@ module.exports = apiRouter => {
     .route("/:project_id")
     .get(
       ProjectsControllers.findByUserIdAndProjectId.bind(ProjectsControllers)
+    );
+  userRouter.use(
+    "/:_id/projects/:project_id/questionnaires",
+    questionnaireRouter
+  );
+  questionnaireRouter
+    .route("/")
+    .get(
+      QuestionnairesControllers.findByUserIdAndProjectId.bind(
+        QuestionnairesControllers
+      )
     );
   //   .patch(ProjectsControllers.updateByUserId.bind(ProjectsControllers))
   //   .delete(ProjectsControllers.deleteByUserId.bind(ProjectsControllers));

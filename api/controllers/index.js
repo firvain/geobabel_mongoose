@@ -1,6 +1,6 @@
-const QuestionnairesControllers = require("./QuestionnairesController");
-const UsersControllers = require("./UsersControllers");
-const ProjectsControllers = require("./ProjectsControllers");
+const QuestionnairesControllers = require("./questionnairesController");
+const UsersControllers = require("./usersControllers");
+const ProjectsControllers = require("./projectsControllers");
 module.exports = {
   UsersControllers,
   QuestionnairesControllers,

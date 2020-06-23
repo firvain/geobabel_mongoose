@@ -24,14 +24,9 @@ class QuestionnairesController extends SuperController {
   }
 
   async createByUserIdAndProjectId(req, res, next) {
-    const user_id = req.params._id;
-    const project_id = req.params.project_id;
     const data = req.body;
-    // console.log(req.params);
     try {
       const result = await this.service.createByUserIdAndProjectId({
-        user_id,
-        project_id,
         data
       });
       res.status(HttpStatus.OK).json(result);

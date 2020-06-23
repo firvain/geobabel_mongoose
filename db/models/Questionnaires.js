@@ -53,7 +53,7 @@ const QuestionnaireSchema = new Schema({
             maxlength: 64,
             required: true
           },
-          questionType: {
+          type: {
             type: String,
             minlength: 1,
             maxlength: 64,

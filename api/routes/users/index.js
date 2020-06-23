@@ -45,6 +45,19 @@ module.exports = apiRouter => {
         QuestionnairesControllers
       )
     );
+  questionnaireRouter
+    .route("/:id")
+    .post(
+      QuestionnairesControllers.createByUserIdAndProjectId.bind(
+        QuestionnairesControllers
+      )
+    )
+    .patch(
+      QuestionnairesControllers.updateByUserIdAndProjectId.bind(
+        QuestionnairesControllers
+      )
+    );
+
   //   .patch(ProjectsControllers.updateByUserId.bind(ProjectsControllers))
   //   .delete(ProjectsControllers.deleteByUserId.bind(ProjectsControllers));
 

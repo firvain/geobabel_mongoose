@@ -44,112 +44,126 @@ const QuestionnaireSchema = new Schema({
   pages: [
     {
       id: { type: String, minlength: 1, maxlength: 64 },
+      title: { type: String, minlength: 1, maxlength: 64 },
       questions: [
         {
-          id: { type: String, minlength: 1, maxlength: 64 },
-          question: {
-            id: {
+          id: {
+            type: String,
+            minlength: 1,
+            maxlength: 64,
+            required: true
+          },
+          questionType: {
+            type: String,
+            minlength: 1,
+            maxlength: 64,
+            required: true
+          },
+          title: {
+            type: String,
+            minlength: 1,
+            maxlength: 64,
+            required: true,
+            default: "no title"
+          },
+          description: {
+            type: String,
+            minlength: 1,
+            default: "no description"
+          },
+          visible: { type: Boolean, default: true },
+          required: { type: Boolean, default: false },
+          enabled: { type: Boolean, default: true },
+          value: { type: String },
+          defaultValue: { type: String },
+          correctValue: { type: String },
+          timeCountdown: { type: Number, min: 0, default: 0 },
+          preloadedData: [
+            {
+              id: {
+                type: String,
+                minlength: 1,
+                maxlength: 64,
+                required: true
+              },
+              text: { type: String }
+            }
+          ],
+          validationRules: [
+            {
+              ruleId: {
+                type: String,
+                minlength: 1,
+                maxlength: 64,
+                required: true
+              },
+              type: { type: String, minlength: 1 },
+              expression: { type: String, minlength: 1 },
+              errorOutput: { type: String, minlength: 1 }
+            }
+          ],
+          horizontalValues: [
+            {
+              id: { type: String, minlength: 1, maxlength: 64 },
+              text: { type: String, minlength: 1 }
+            }
+          ],
+          verticalValues: [
+            {
+              id: { type: String, minlength: 1, maxlength: 64 },
+              text: { type: String, minlength: 1 }
+            }
+          ],
+          multipleButtons: { type: Boolean, default: false },
+          buttons: [
+            {
+              id: {
+                type: String,
+                minlength: 1,
+                maxlength: 64,
+                required: true
+              },
+              label: { type: String },
+              geometryType: {
+                type: String,
+                minlength: 1,
+                default: "Point"
+              },
+              coords: { type: String },
+              style: {
+                radius: { type: Number, min: 0, default: 1 },
+                strkWdth: { type: Number, min: 0, default: 1 },
+                strkClr: {
+                  type: String,
+                  minlength: 1,
+                  default: "#000000"
+                },
+                fllClr: { type: String, minlength: 1, default: "#000000" }
+              }
+            }
+          ],
+          style: {
+            titleFontSize: { type: Number, min: 1, default: 10 },
+            titleFontColor: {
               type: String,
               minlength: 1,
-              maxlength: 64,
-              required: true
+              default: "#000000"
             },
-            type: { type: String, minlength: 1 },
-            title: { type: String, minlength: 1 },
-            description: { type: String, minlength: 1 },
-            visible: { type: Boolean, default: true },
-            required: { type: Boolean, default: false },
-            enabled: { type: Boolean, default: true },
-            value: { type: String },
-            defaultValue: { type: String },
-            correctValue: { type: String },
-            timeCountdown: { type: Number, min: 0, default: 0 },
-            preloadedData: [
-              {
-                id: {
-                  type: String,
-                  minlength: 1,
-                  maxlength: 64,
-                  required: true
-                },
-                text: { type: String }
-              }
-            ],
-            validationRules: [
-              {
-                ruleId: {
-                  type: String,
-                  minlength: 1,
-                  maxlength: 64,
-                  required: true
-                },
-                type: { type: String, minlength: 1 },
-                expression: { type: String, minlength: 1 },
-                errorOutput: { type: String, minlength: 1 }
-              }
-            ],
-            horizontalValues: [
-              {
-                id: { type: String, minlength: 1, maxlength: 64 },
-                text: { type: String, minlength: 1 }
-              }
-            ],
-            verticalValues: [
-              {
-                id: { type: String, minlength: 1, maxlength: 64 },
-                text: { type: String, minlength: 1 }
-              }
-            ],
-            multipleButtons: { type: Boolean, default: false },
-            buttons: [
-              {
-                id: {
-                  type: String,
-                  minlength: 1,
-                  maxlength: 64,
-                  required: true
-                },
-                label: { type: String },
-                geometryType: {
-                  type: String,
-                  minlength: 1,
-                  default: "Point"
-                },
-                coords: { type: String },
-                style: {
-                  radius: { type: Number, min: 0, default: 1 },
-                  strkWdth: { type: Number, min: 0, default: 1 },
-                  strkClr: {
-                    type: String,
-                    minlength: 1,
-                    default: "#000000"
-                  },
-                  fllClr: { type: String, minlength: 1, default: "#000000" }
-                }
-              }
-            ],
-            style: {
-              titleFontSize: { type: Number, min: 1, default: 10 },
-              titleFontColor: {
-                type: String,
-                minlength: 1,
-                default: "#000000"
-              },
-              descriptionFontSize: { type: Number, min: 1, default: 9 },
-              descriptionFontColor: {
-                type: String,
-                minlength: 1,
-                default: "#000000"
-              },
-              titleLocation: { type: String, minlength: 1, default: "top" },
-              descriptionLocation: {
-                type: String,
-                minlength: 1,
-                default: "top"
-              },
-              widthOverride: { type: Number, min: 0 }
-            }
-          }
+            descriptionFontSize: { type: Number, min: 1, default: 9 },
+            descriptionFontColor: {
+              type: String,
+              minlength: 1,
+              default: "#000000"
+            },
+            titleLocation: { type: String, minlength: 1, default: "top" },
+            descriptionLocation: {
+              type: String,
+              minlength: 1,
+              default: "top"
+            },
+            widthOverride: { type: Number, min: 0 }
+          },
+          layout: { type: String }
         }
       ]
     }

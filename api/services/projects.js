@@ -1,25 +1,29 @@
-const { Projects, Users } = require("../../db/models");
+const { Projects, Users, Questionnaires } = require("../../db/models");
 const { ErrorHandler } = require("../../helpers/error");
 const { isValid } = require("mongoose").Types.ObjectId;
 const { ObjectId } = require("mongoose").Types.ObjectId;
 
 const SuperService = require("./SuperService");
 class ProjectsService extends SuperService {
-  constructor(model, extraModel = Users) {
+  constructor(
+    model,
+    extraModel = Users,
+    extraModelQuestionnaires = Questionnaires
+  ) {
     super(model);
     this.extraModel = extraModel;
+    this.extraModelQuestionnaires = extraModelQuestionnaires;
   }
-  async create(data) {
+  async createByUserId(data) {
+    // console.log("create the project::", data);
     try {
-      if (!isValid(data.user_id))
+      if (!isValid(data.project.user_id))
         throw new ErrorHandler(400, "invalid user_id");
-      const userExits = await this.extraModel.exists({ _id: data.user_id });
-      if (!userExits) throw new ErrorHandler(404, "user does not exist");
-      const projectExists = await this.model.exists(data);
-      if (projectExists) {
-        throw new ErrorHandler(409, "duplicate project");
-      }
-      const project = new this.model(data);
+      const userExists = await this.extraModel.exists({
+        _id: data.project.user_id
+      });
+      if (!userExists) throw new ErrorHandler(404, "user does not exist");
+      const project = new this.model(data.project);
       return await project.save();
     } catch (error) {
       throw error;
@@ -27,7 +31,6 @@ class ProjectsService extends SuperService {
   }
   async findByUserId(user_id, params) {
     const queryString = { user_id: ObjectId(user_id), ...params };
-    console.log(queryString);
     try {
       if (!isValid(user_id)) throw new ErrorHandler(400, "invalid user id");
       const result = await this.model.find(queryString).exec();
@@ -68,6 +71,33 @@ class ProjectsService extends SuperService {
         return result;
       } else {
         throw new ErrorHandler(404, "user does not have projects");
+      }
+    } catch (error) {
+      throw error;
+    }
+  }
+  async deleteByUserIdAndProjectId({ user_id, project_id }) {
+    try {
+      if (!isValid(user_id)) throw new ErrorHandler(400, "invalid user id");
+      if (!isValid(project_id))
+        throw new ErrorHandler(400, "invalid project id");
+      try {
+        const result = await this.extraModelQuestionnaires.deleteMany({
+          project_id: ObjectId(project_id)
+        });
+        // TODO: what to do with the result?
+        try {
+          const result = await this.model.findOneAndDelete({ _id: project_id });
+          if (result) {
+            return result.toObject({ versionKey: false });
+          } else {
+            throw new ErrorHandler(404, "not found");
+          }
+        } catch (error) {
+          throw error;
+        }
+      } catch (error) {
+        throw error;
       }
     } catch (error) {
       throw error;

@@ -8,6 +8,7 @@ const {
   ProjectsControllers,
   QuestionnairesControllers
 } = require("../../controllers");
+// const QuestionnairesController = require("../../controllers/QuestionnairesController");
 
 module.exports = apiRouter => {
   // apiRouter.use("/projects", projectRouter);
@@ -27,12 +28,13 @@ module.exports = apiRouter => {
   projectRouter
     .route("/")
     .get(ProjectsControllers.findByUserId.bind(ProjectsControllers))
-    .delete(ProjectsControllers.deleteAllByUserId.bind(ProjectsControllers));
-  // .post(ProjectsControllers.create.bind(ProjectsControllers));
+    .delete(ProjectsControllers.deleteAllByUserId.bind(ProjectsControllers))
+    .post(ProjectsControllers.createByUserId.bind(ProjectsControllers));
   projectRouter
     .route("/:project_id")
-    .get(
-      ProjectsControllers.findByUserIdAndProjectId.bind(ProjectsControllers)
+    .get(ProjectsControllers.findByUserIdAndProjectId.bind(ProjectsControllers))
+    .delete(
+      ProjectsControllers.deleteByUserIdAndProjectId.bind(ProjectsControllers)
     );
   userRouter.use(
     "/:_id/projects/:project_id/questionnaires",
@@ -54,6 +56,11 @@ module.exports = apiRouter => {
     )
     .patch(
       QuestionnairesControllers.updateByUserIdAndProjectId.bind(
+        QuestionnairesControllers
+      )
+    )
+    .delete(
+      QuestionnairesControllers.deleteByUserIdAndProjectId.bind(
         QuestionnairesControllers
       )
     );

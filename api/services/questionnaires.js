@@ -83,13 +83,42 @@ class QuestionnairesService extends SuperService {
       if (!projectExists) throw new ErrorHandler(404, "project does not exist");
 
       try {
-        console.log(data.pages[0].questions[0].title);
         const result = await this.model
           .findByIdAndUpdate(data._id, data, {
             new: true
           })
           .exec();
         // console.log(JSON.stringify(result));
+        if (result) {
+          return result.toObject({ versionKey: false });
+        } else {
+          throw new ErrorHandler(404, "not found");
+        }
+      } catch (error) {
+        throw error;
+      }
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async deleteByUserIdAndProjectId({ data }) {
+    try {
+      if (!isValid(data.user_id))
+        throw new ErrorHandler(400, "invalid user id");
+      if (!isValid(data.project_id))
+        throw new ErrorHandler(400, "invalid project id");
+      const userExists = await this.extraModel_user.exists({
+        _id: data.user_id
+      });
+      if (!userExists) throw new ErrorHandler(404, "user does not exist");
+      const projectExists = await this.extraModel_project.exists({
+        _id: data.project_id
+      });
+      if (!projectExists) throw new ErrorHandler(404, "project does not exist");
+
+      try {
+        const result = await this.model.findOneAndDelete({ _id: data._id });
         if (result) {
           return result.toObject({ versionKey: false });
         } else {

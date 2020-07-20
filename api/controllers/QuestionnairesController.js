@@ -46,6 +46,18 @@ class QuestionnairesController extends SuperController {
       next(error);
     }
   }
+
+  async deleteByUserIdAndProjectId(req, res, next) {
+    const data = req.body;
+    try {
+      const result = await this.service.deleteByUserIdAndProjectId({
+        data
+      });
+      res.status(HttpStatus.OK).json(result);
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 module.exports = new QuestionnairesController(QuestionnairesService);
